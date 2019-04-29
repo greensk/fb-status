@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>FB testing</title>
+    <meta charset="utf8"/>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDzu0RDF8EFKWlkpdnZkMRTrHv4h5f7RPI",
+        authDomain: "fb-micro.firebaseapp.com",
+        databaseURL: "https://fb-micro.firebaseio.com",
+        projectId: "fb-micro",
+        storageBucket: "fb-micro.appspot.com",
+        messagingSenderId: "496492835836"
+      };
+      firebase.initializeApp(config);
+    </script>
+		<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  </head>
+  <body>
+    <div id="message"></div>
+    <div id="loader">
+      <img src="loader.gif"/>
+    </div>
+    <div id="auth"></div>
+    <div id="content"></div>
+    <template id="user-template">
+      <div class="user-item">
+        <div class="name"></div>
+        <textarea class="message"></textarea>
+        <button class="save">Сохранить</button>
+      </div>
+    </template>
+    <script src="index.js"></script>
+  </body>
+</html>
