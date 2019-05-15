@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "users": {
+      ".read": true,
+      "$uid": {
+    		".write": "auth.uid == $uid || root.child('groups').child(auth.uid).val() == 'admin'"
+      }
+    }
+  }
+}
