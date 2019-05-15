@@ -5,6 +5,8 @@ firebase.auth().onAuthStateChanged(function (user) {
 	if (user !== null) {
     document.getElementById('auth').setAttribute('style', 'display: none')
     document.getElementById('loader').setAttribute('style', '')
+    document.getElementById('logout').addEventListener('click', onLogout)
+    document.getElementById('logout').setAttribute('style', '')
     userId = user.uid
     userDisplayName = user.displayName
 		loadContent()
@@ -17,7 +19,7 @@ ui.start(document.getElementById('auth'), {
     firebase.auth.GoogleAuthProvider.PROVIDER_ID
   ],
   signInSuccessUrl: location.href
-})
+})  
 function loadContent () {
   firebase.database().ref('/users').on('value', function (snapshot) {
     var data = snapshot.val()
@@ -56,5 +58,13 @@ function contentAfterSave (err) {
   document.getElementById('loader').setAttribute('style', 'display: none')
   if (err) {
     document.getElementById('message').innerText = err.message
+  } else {
+    document.getElementById('message').innerText = ''
   }
+}
+function onLogout () {
+  document.getElementById('content').innerHTML = ''
+  firebase.auth().signOut()
+  document.getElementById('logout').setAttribute('style', 'display: none')
+  document.getElementById('auth').setAttribute('style', '')
 }
